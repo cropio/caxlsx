@@ -36,8 +36,8 @@ class TestWorksheet < Test::Unit::TestCase
 
   def test_exception_if_name_too_long_because_of_multibyte_characters
     three_byte_character = "✔"
-    assert_nothing_raised { @ws.name = 'x' * 28 + three_byte_character}
-    assert_raises(ArgumentError) { @ws.name = 'x' * 29 + three_byte_character }
+    assert_nothing_raised { @ws.name = three_byte_character * 20 }
+    assert_raises(ArgumentError) { @ws.name = three_byte_character * 21 }
   end
 
   def test_page_margins
